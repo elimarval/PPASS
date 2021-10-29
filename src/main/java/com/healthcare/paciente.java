@@ -6,12 +6,35 @@ package com.healthcare;
 
 public class paciente implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public paciente() {
-    }
+	@org.kie.api.definition.type.Label(value = "Nombre del paciente")
+	private java.lang.String nombre;
+	@org.kie.api.definition.type.Label(value = "numero de la seguridad social")
+	private java.lang.String nss;
 
+	public paciente() {
+	}
 
+	public java.lang.String getNombre() {
+		return this.nombre;
+	}
 
+	public void setNombre(java.lang.String nombre) {
+		this.nombre = nombre;
+	}
+
+	public java.lang.String getNss() {
+		return this.nss;
+	}
+
+	public void setNss(java.lang.String nss) {
+		this.nss = nss;
+	}
+
+	public paciente(java.lang.String nombre, java.lang.String nss) {
+		this.nombre = nombre;
+		this.nss = nss;
+	}
 
 }
