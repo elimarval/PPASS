@@ -6,12 +6,35 @@ package com.healthcare;
 
 public class Participant implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public Participant() {
-    }
+	@org.kie.api.definition.type.Label(value = "tipo de participante")
+	private java.lang.String type;
+	@org.kie.api.definition.type.Label(value = "referencia al participante")
+	private java.lang.String actor;
 
+	public Participant() {
+	}
 
+	public java.lang.String getType() {
+		return this.type;
+	}
 
+	public void setType(java.lang.String type) {
+		this.type = type;
+	}
+
+	public java.lang.String getActor() {
+		return this.actor;
+	}
+
+	public void setActor(java.lang.String actor) {
+		this.actor = actor;
+	}
+
+	public Participant(java.lang.String type, java.lang.String actor) {
+		this.type = type;
+		this.actor = actor;
+	}
 
 }
