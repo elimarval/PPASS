@@ -7,29 +7,51 @@ package com.healthcare;
 @javax.persistence.Entity
 public class CodeableConcept implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "CODEABLECONCEPT_ID_GENERATOR")
-    @javax.persistence.Id
-    @javax.persistence.SequenceGenerator(name = "CODEABLECONCEPT_ID_GENERATOR", sequenceName = "CODEABLECONCEPT_ID_SEQ")
-    private java.lang.Long id;
+	@javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "CODEABLECONCEPT_ID_GENERATOR")
+	@javax.persistence.Id
+	@javax.persistence.SequenceGenerator(name = "CODEABLECONCEPT_ID_GENERATOR", sequenceName = "CODEABLECONCEPT_ID_SEQ")
+	private java.lang.Long id;
 
-    public CodeableConcept() {
-    }
-    
-    public CodeableConcept(java.lang.Long id) {
-        this.id = id;
-    }
+	@org.kie.api.definition.type.Label(value = "codigo")
+	private java.lang.String coding;
 
-    public java.lang.Long getId() {
-        return this.id;
-    }
-    
-    public void setId(java.lang.Long id) {
-        this.id = id;
-    }
+	@org.kie.api.definition.type.Label(value = "descripción")
+	private java.lang.String text;
 
+	public CodeableConcept() {
+	}
 
+	public java.lang.Long getId() {
+		return this.id;
+	}
 
+	public void setId(java.lang.Long id) {
+		this.id = id;
+	}
+
+	public java.lang.String getCoding() {
+		return this.coding;
+	}
+
+	public void setCoding(java.lang.String coding) {
+		this.coding = coding;
+	}
+
+	public java.lang.String getText() {
+		return this.text;
+	}
+
+	public void setText(java.lang.String text) {
+		this.text = text;
+	}
+
+	public CodeableConcept(java.lang.Long id, java.lang.String coding,
+			java.lang.String text) {
+		this.id = id;
+		this.coding = coding;
+		this.text = text;
+	}
 
 }
