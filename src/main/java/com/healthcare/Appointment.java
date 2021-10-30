@@ -30,9 +30,9 @@ public class Appointment implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("comentario")
 	private java.lang.String comment;
 
+	@org.kie.api.definition.type.Label("Participantes")
+	@org.kie.api.definition.type.Description("es una lista, necesitamos dos el médico y el paciente")
 	@javax.persistence.OneToMany(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
-	@org.kie.api.definition.type.Description(value = "es una lista, necesitamos dos el médico y el paciente")
-	@org.kie.api.definition.type.Label(value = "Participantes")
 	private java.util.List<com.healthcare.Participant> participant;
 
 	public Appointment() {
