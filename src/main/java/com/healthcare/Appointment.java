@@ -7,29 +7,114 @@ package com.healthcare;
 @javax.persistence.Entity
 public class Appointment implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "APPOINTMENT_ID_GENERATOR")
-    @javax.persistence.Id
-    @javax.persistence.SequenceGenerator(name = "APPOINTMENT_ID_GENERATOR", sequenceName = "APPOINTMENT_ID_SEQ")
-    private java.lang.Long id;
+	@javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "APPOINTMENT_ID_GENERATOR")
+	@javax.persistence.Id
+	@javax.persistence.SequenceGenerator(name = "APPOINTMENT_ID_GENERATOR", sequenceName = "APPOINTMENT_ID_SEQ")
+	private java.lang.Long id;
 
-    public Appointment() {
-    }
-    
-    public Appointment(java.lang.Long id) {
-        this.id = id;
-    }
+	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
+	@org.kie.api.definition.type.Label(value = "identificadores")
+	private com.healthcare.Identifier identifier;
 
-    public java.lang.Long getId() {
-        return this.id;
-    }
-    
-    public void setId(java.lang.Long id) {
-        this.id = id;
-    }
+	@org.kie.api.definition.type.Label(value = "código del estado")
+	private java.lang.String status;
 
+	@org.kie.api.definition.type.Label(value = "descripción")
+	private java.lang.String description;
 
+	@org.kie.api.definition.type.Label(value = "fecha inicio")
+	private java.util.Date start;
 
+	@org.kie.api.definition.type.Label(value = "fecha final")
+	private java.util.Date end;
+
+	@org.kie.api.definition.type.Label(value = "comentario")
+	private java.lang.String comment;
+
+	@org.kie.api.definition.type.Label(value = "Participantes")
+	private java.lang.String participant;
+
+	public Appointment() {
+	}
+
+	public java.lang.Long getId() {
+		return this.id;
+	}
+
+	public void setId(java.lang.Long id) {
+		this.id = id;
+	}
+
+	public com.healthcare.Identifier getIdentifier() {
+		return this.identifier;
+	}
+
+	public void setIdentifier(com.healthcare.Identifier identifier) {
+		this.identifier = identifier;
+	}
+
+	public java.lang.String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(java.lang.String status) {
+		this.status = status;
+	}
+
+	public java.lang.String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(java.lang.String description) {
+		this.description = description;
+	}
+
+	public java.util.Date getStart() {
+		return this.start;
+	}
+
+	public void setStart(java.util.Date start) {
+		this.start = start;
+	}
+
+	public java.util.Date getEnd() {
+		return this.end;
+	}
+
+	public void setEnd(java.util.Date end) {
+		this.end = end;
+	}
+
+	public java.lang.String getComment() {
+		return this.comment;
+	}
+
+	public void setComment(java.lang.String comment) {
+		this.comment = comment;
+	}
+
+	public java.lang.String getParticipant() {
+		return this.participant;
+	}
+
+	public void setParticipant(java.lang.String participant) {
+		this.participant = participant;
+	}
+
+	public Appointment(java.lang.Long id, com.healthcare.Identifier identifier,
+			java.lang.String status, java.lang.String description,
+			java.util.Date start, java.util.Date end, java.lang.String comment,
+			java.lang.String participant) {
+		this.id = id;
+		this.identifier = identifier;
+		this.status = status;
+		this.description = description;
+		this.start = start;
+		this.end = end;
+		this.comment = comment;
+		this.participant = participant;
+	}
 
 }
