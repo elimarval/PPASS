@@ -14,27 +14,29 @@ public class Appointment implements java.io.Serializable {
 	@javax.persistence.SequenceGenerator(name = "APPOINTMENT_ID_GENERATOR", sequenceName = "APPOINTMENT_ID_SEQ")
 	private java.lang.Long id;
 
+	@org.kie.api.definition.type.Label("identificadores")
 	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
-	@org.kie.api.definition.type.Label(value = "identificadores")
 	private com.healthcare.Identifier identifier;
 
-	@org.kie.api.definition.type.Label(value = "código del estado")
+	@org.kie.api.definition.type.Label("código del estado")
 	private java.lang.String status;
 
-	@org.kie.api.definition.type.Label(value = "descripción")
+	@org.kie.api.definition.type.Label("descripción")
 	private java.lang.String description;
 
-	@org.kie.api.definition.type.Label(value = "fecha inicio")
+	@org.kie.api.definition.type.Label("fecha inicio")
 	private java.util.Date start;
 
-	@org.kie.api.definition.type.Label(value = "fecha final")
+	@org.kie.api.definition.type.Label("fecha final")
 	private java.util.Date end;
 
-	@org.kie.api.definition.type.Label(value = "comentario")
+	@org.kie.api.definition.type.Label("comentario")
 	private java.lang.String comment;
 
-	@org.kie.api.definition.type.Label(value = "Participantes")
-	private java.lang.String participant;
+	@org.kie.api.definition.type.Label("Participantes")
+	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
+	@org.kie.api.definition.type.Description("Lista de participantes en la cita")
+	private Participant participant;
 
 	public Appointment() {
 	}
@@ -95,18 +97,18 @@ public class Appointment implements java.io.Serializable {
 		this.comment = comment;
 	}
 
-	public java.lang.String getParticipant() {
+	public com.healthcare.Participant getParticipant() {
 		return this.participant;
 	}
 
-	public void setParticipant(java.lang.String participant) {
+	public void setParticipant(com.healthcare.Participant participant) {
 		this.participant = participant;
 	}
 
 	public Appointment(java.lang.Long id, com.healthcare.Identifier identifier,
 			java.lang.String status, java.lang.String description,
 			java.util.Date start, java.util.Date end, java.lang.String comment,
-			java.lang.String participant) {
+			com.healthcare.Participant participant) {
 		this.id = id;
 		this.identifier = identifier;
 		this.status = status;
