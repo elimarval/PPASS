@@ -27,16 +27,13 @@ public class Appointment implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("fecha inicio")
 	private java.util.Date start;
 
-	@org.kie.api.definition.type.Label("fecha final")
-	private java.util.Date end;
-
 	@org.kie.api.definition.type.Label("comentario")
 	private java.lang.String comment;
 
-	@org.kie.api.definition.type.Label("Participantes")
-	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
-	@org.kie.api.definition.type.Description("Lista de participantes en la cita")
-	private Participant participant;
+	@javax.persistence.OneToMany(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
+	@org.kie.api.definition.type.Description(value = "es una lista, necesitamos dos el médico y el paciente")
+	@org.kie.api.definition.type.Label(value = "Participantes")
+	private java.util.List<com.healthcare.Participant> participant;
 
 	public Appointment() {
 	}
@@ -81,14 +78,6 @@ public class Appointment implements java.io.Serializable {
 		this.start = start;
 	}
 
-	public java.util.Date getEnd() {
-		return this.end;
-	}
-
-	public void setEnd(java.util.Date end) {
-		this.end = end;
-	}
-
 	public java.lang.String getComment() {
 		return this.comment;
 	}
@@ -97,24 +86,24 @@ public class Appointment implements java.io.Serializable {
 		this.comment = comment;
 	}
 
-	public com.healthcare.Participant getParticipant() {
+	public java.util.List<com.healthcare.Participant> getParticipant() {
 		return this.participant;
 	}
 
-	public void setParticipant(com.healthcare.Participant participant) {
+	public void setParticipant(
+			java.util.List<com.healthcare.Participant> participant) {
 		this.participant = participant;
 	}
 
 	public Appointment(java.lang.Long id, com.healthcare.Identifier identifier,
 			java.lang.String status, java.lang.String description,
-			java.util.Date start, java.util.Date end, java.lang.String comment,
-			com.healthcare.Participant participant) {
+			java.util.Date start, java.lang.String comment,
+			java.util.List<com.healthcare.Participant> participant) {
 		this.id = id;
 		this.identifier = identifier;
 		this.status = status;
 		this.description = description;
 		this.start = start;
-		this.end = end;
 		this.comment = comment;
 		this.participant = participant;
 	}
