@@ -7,29 +7,88 @@ package com.healthcare;
 @javax.persistence.Entity
 public class Coding implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "CODING_ID_GENERATOR")
-    @javax.persistence.Id
-    @javax.persistence.SequenceGenerator(name = "CODING_ID_GENERATOR", sequenceName = "CODING_ID_SEQ")
-    private java.lang.Long id;
+	@javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "CODING_ID_GENERATOR")
+	@javax.persistence.Id
+	@javax.persistence.SequenceGenerator(name = "CODING_ID_GENERATOR", sequenceName = "CODING_ID_SEQ")
+	private java.lang.Long id;
 
-    public Coding() {
-    }
-    
-    public Coding(java.lang.Long id) {
-        this.id = id;
-    }
+	@org.kie.api.definition.type.Label(value = "uri del sistema")
+	private java.lang.String system;
 
-    public java.lang.Long getId() {
-        return this.id;
-    }
-    
-    public void setId(java.lang.Long id) {
-        this.id = id;
-    }
+	@org.kie.api.definition.type.Label(value = "versión del código")
+	private java.lang.String version;
 
+	@org.kie.api.definition.type.Label(value = "código")
+	private java.lang.String code;
 
+	@org.kie.api.definition.type.Label(value = "representación")
+	private java.lang.String display;
 
+	@org.kie.api.definition.type.Label(value = "elegido por el usuario")
+	private boolean userSelected;
+
+	public Coding() {
+	}
+
+	public java.lang.Long getId() {
+		return this.id;
+	}
+
+	public void setId(java.lang.Long id) {
+		this.id = id;
+	}
+
+	public java.lang.String getSystem() {
+		return this.system;
+	}
+
+	public void setSystem(java.lang.String system) {
+		this.system = system;
+	}
+
+	public java.lang.String getVersion() {
+		return this.version;
+	}
+
+	public void setVersion(java.lang.String version) {
+		this.version = version;
+	}
+
+	public java.lang.String getCode() {
+		return this.code;
+	}
+
+	public void setCode(java.lang.String code) {
+		this.code = code;
+	}
+
+	public java.lang.String getDisplay() {
+		return this.display;
+	}
+
+	public void setDisplay(java.lang.String display) {
+		this.display = display;
+	}
+
+	public boolean isUserSelected() {
+		return this.userSelected;
+	}
+
+	public void setUserSelected(boolean userSelected) {
+		this.userSelected = userSelected;
+	}
+
+	public Coding(java.lang.Long id, java.lang.String system,
+			java.lang.String version, java.lang.String code,
+			java.lang.String display, boolean userSelected) {
+		this.id = id;
+		this.system = system;
+		this.version = version;
+		this.code = code;
+		this.display = display;
+		this.userSelected = userSelected;
+	}
 
 }
