@@ -14,10 +14,11 @@ public class CodeableConcept implements java.io.Serializable {
 	@javax.persistence.SequenceGenerator(name = "CODEABLECONCEPT_ID_GENERATOR", sequenceName = "CODEABLECONCEPT_ID_SEQ")
 	private java.lang.Long id;
 
-	@org.kie.api.definition.type.Label(value = "codigo")
-	private java.lang.String coding;
+	@org.kie.api.definition.type.Label("codigo")
+	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
+	private Coding coding;
 
-	@org.kie.api.definition.type.Label(value = "descripción")
+	@org.kie.api.definition.type.Label("descripción")
 	private java.lang.String text;
 
 	public CodeableConcept() {
@@ -31,14 +32,6 @@ public class CodeableConcept implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public java.lang.String getCoding() {
-		return this.coding;
-	}
-
-	public void setCoding(java.lang.String coding) {
-		this.coding = coding;
-	}
-
 	public java.lang.String getText() {
 		return this.text;
 	}
@@ -47,7 +40,15 @@ public class CodeableConcept implements java.io.Serializable {
 		this.text = text;
 	}
 
-	public CodeableConcept(java.lang.Long id, java.lang.String coding,
+	public com.healthcare.Coding getCoding() {
+		return this.coding;
+	}
+
+	public void setCoding(com.healthcare.Coding coding) {
+		this.coding = coding;
+	}
+
+	public CodeableConcept(java.lang.Long id, com.healthcare.Coding coding,
 			java.lang.String text) {
 		this.id = id;
 		this.coding = coding;
