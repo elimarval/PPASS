@@ -8,20 +8,12 @@ public class Participant implements java.io.Serializable {
 
 	static final long serialVersionUID = 1L;
 
-	@org.kie.api.definition.type.Label(value = "tipo de participante")
-	private java.lang.String type;
-	@org.kie.api.definition.type.Label(value = "referencia al participante")
+	@org.kie.api.definition.type.Label("tipo de participante")
+	private CodeableConcept type;
+	@org.kie.api.definition.type.Label("referencia al participante")
 	private java.lang.String actor;
 
 	public Participant() {
-	}
-
-	public java.lang.String getType() {
-		return this.type;
-	}
-
-	public void setType(java.lang.String type) {
-		this.type = type;
 	}
 
 	public java.lang.String getActor() {
@@ -32,7 +24,16 @@ public class Participant implements java.io.Serializable {
 		this.actor = actor;
 	}
 
-	public Participant(java.lang.String type, java.lang.String actor) {
+	public com.healthcare.CodeableConcept getType() {
+		return this.type;
+	}
+
+	public void setType(com.healthcare.CodeableConcept type) {
+		this.type = type;
+	}
+
+	public Participant(com.healthcare.CodeableConcept type,
+			java.lang.String actor) {
 		this.type = type;
 		this.actor = actor;
 	}
