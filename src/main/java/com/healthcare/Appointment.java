@@ -14,10 +14,6 @@ public class Appointment implements java.io.Serializable {
 	@javax.persistence.SequenceGenerator(name = "APPOINTMENT_ID_GENERATOR", sequenceName = "APPOINTMENT_ID_SEQ")
 	private java.lang.Long id;
 
-	@org.kie.api.definition.type.Label("identificadores")
-	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
-	private com.healthcare.Identifier identifier;
-
 	@org.kie.api.definition.type.Label("código del estado")
 	private java.lang.String status;
 
@@ -30,10 +26,9 @@ public class Appointment implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("comentario")
 	private java.lang.String comment;
 
-	@org.kie.api.definition.type.Label("Participantes")
-	@org.kie.api.definition.type.Description("es una lista, necesitamos dos el médico y el paciente")
-	@javax.persistence.OneToMany(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
-	private java.util.List<com.healthcare.Participant> participant;
+	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
+	@org.kie.api.definition.type.Label(value = "medico para el que se solicita")
+	private com.healthcare.Participant medico;
 
 	public Appointment() {
 	}
@@ -44,14 +39,6 @@ public class Appointment implements java.io.Serializable {
 
 	public void setId(java.lang.Long id) {
 		this.id = id;
-	}
-
-	public com.healthcare.Identifier getIdentifier() {
-		return this.identifier;
-	}
-
-	public void setIdentifier(com.healthcare.Identifier identifier) {
-		this.identifier = identifier;
 	}
 
 	public java.lang.String getStatus() {
@@ -86,26 +73,23 @@ public class Appointment implements java.io.Serializable {
 		this.comment = comment;
 	}
 
-	public java.util.List<com.healthcare.Participant> getParticipant() {
-		return this.participant;
+	public com.healthcare.Participant getMedico() {
+		return this.medico;
 	}
 
-	public void setParticipant(
-			java.util.List<com.healthcare.Participant> participant) {
-		this.participant = participant;
+	public void setMedico(com.healthcare.Participant medico) {
+		this.medico = medico;
 	}
 
-	public Appointment(java.lang.Long id, com.healthcare.Identifier identifier,
-			java.lang.String status, java.lang.String description,
-			java.util.Date start, java.lang.String comment,
-			java.util.List<com.healthcare.Participant> participant) {
+	public Appointment(java.lang.Long id, java.lang.String status,
+			java.lang.String description, java.util.Date start,
+			java.lang.String comment, com.healthcare.Participant medico) {
 		this.id = id;
-		this.identifier = identifier;
 		this.status = status;
 		this.description = description;
 		this.start = start;
 		this.comment = comment;
-		this.participant = participant;
+		this.medico = medico;
 	}
 
 }
