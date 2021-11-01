@@ -8,7 +8,7 @@ public class Appointment implements java.io.Serializable {
 
 	static final long serialVersionUID = 1L;
 
-	@javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "APPOINTMENT_ID_GENERATOR")
+	@javax.persistence.GeneratedValue(generator = "APPOINTMENT_ID_GENERATOR", strategy = javax.persistence.GenerationType.AUTO)
 	@javax.persistence.Id
 	@javax.persistence.SequenceGenerator(name = "APPOINTMENT_ID_GENERATOR", sequenceName = "APPOINTMENT_ID_SEQ")
 	private java.lang.Long id;
@@ -25,13 +25,11 @@ public class Appointment implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("comentario")
 	private java.lang.String comment;
 
-	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
 	@org.kie.api.definition.type.Label("medico para el que se solicita")
-	private com.healthcare.Participant medico;
+	private String medico;
 
-	@javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
 	@org.kie.api.definition.type.Label("paciente para el que se solicita")
-	private com.healthcare.Participant paciente;
+	private String paciente;
 
 	public Appointment() {
 	}
@@ -76,26 +74,26 @@ public class Appointment implements java.io.Serializable {
 		this.comment = comment;
 	}
 
-	public com.healthcare.Participant getMedico() {
+	public java.lang.String getMedico() {
 		return this.medico;
 	}
 
-	public void setMedico(com.healthcare.Participant medico) {
+	public void setMedico(java.lang.String medico) {
 		this.medico = medico;
 	}
 
-	public com.healthcare.Participant getPaciente() {
+	public java.lang.String getPaciente() {
 		return this.paciente;
 	}
 
-	public void setPaciente(com.healthcare.Participant paciente) {
+	public void setPaciente(java.lang.String paciente) {
 		this.paciente = paciente;
 	}
 
 	public Appointment(java.lang.Long id, java.lang.String status,
 			java.lang.String description, java.util.Date start,
-			java.lang.String comment, com.healthcare.Participant medico,
-			com.healthcare.Participant paciente) {
+			java.lang.String comment, java.lang.String medico,
+			java.lang.String paciente) {
 		this.id = id;
 		this.status = status;
 		this.description = description;
