@@ -91,5 +91,9 @@ public class Appointment implements java.io.Serializable {
 		this.comment = comment;
 		this.medico = medico;
 	}
+	@Override
+	String toString(){
+	    return "Appointment values: dr: "+this.getMedico()+" Date: "+this.getStart()+" Estado: "+this.getStatus();
+	}
 
 }
